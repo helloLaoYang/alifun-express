@@ -1,0 +1,26 @@
+{
+  "name": "alifun-express",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:helloLaoYang/alifun-express.git",
+  "author": "hellolaoyang <aaron@codonas.cn>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon build/entry/dev.js --watch src",
+    "dev:fun": "nodemon build/index --watch src"
+  },
+  "devDependencies": {
+    "@alicloud/fun": "^3.6.23",
+    "mongodb-client-encryption": "^1.2.5",
+    "nodemon": "^2.0.7",
+    "progress-bar-webpack-plugin": "^2.1.0",
+    "rimraf": "^3.0.2",
+    "webpack": "^5.40.0",
+    "webpack-node-externals": "^3.0.0"
+  },
+  "dependencies": {
+    "@webserverless/fc-express": "^1.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.14"
+  }
+}
