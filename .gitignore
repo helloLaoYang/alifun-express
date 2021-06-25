@@ -1,4 +1,5 @@
 .vscode
-dist
+.fun
+output
 node_modules
 *.log

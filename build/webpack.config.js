@@ -4,12 +4,12 @@ const ProgressBar = require('progress-bar-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 
 module.exports = {
-  target: 'node',
+  target: 'node12',
   mode: 'production',
-  entry: path.resolve(__dirname, 'entry', 'fun.js'),
+  entry: path.resolve(__dirname, '..', 'src'),
   output: {
     filename: 'index.js',
-    path: path.resolve(__dirname, '..', 'dist'),
+    path: path.resolve(__dirname, '..', 'output'),
     libraryTarget: 'commonjs2',
   },
   devtool: 'source-map',
@@ -21,5 +21,10 @@ module.exports = {
     minimizer: [
       new TerserPlugin()
     ],
+  },
+  resolve: {
+    modules: [
+      path.resolve(__dirname, '..', 'node_modules'),
+    ]
   },
 }

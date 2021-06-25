@@ -4,7 +4,7 @@ const webpack = require('webpack')
 const webpackConfig = require('./webpack.config')
 
 rimraf(
-  path.resolve(__dirname, '../dist'),
+  path.resolve(__dirname, '../output/*'),
   () => {
     webpack(webpackConfig, (err, stats) => {
       if (err) {

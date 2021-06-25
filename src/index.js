@@ -1,20 +1,29 @@
 
-const express = require('express')
+const { Server, eventContext } = require('@webserverless/fc-express')
+const app = require('./www')
 
-const app = express()
+// 加入context在request.eventContext
+app.use(eventContext())
 
-app.all("*", (req, res) => {
-  res.send('hello world!')
-})
+// 加载路由
+require('./router')
 
-// returns express instance
-const createApp = () => (
-  app
-)
 
-const createInitializer = require('./mongoose')
+// 使用express代理fc httpTrigger
+const server = new Server(app)
 
+// handler oauth
 module.exports = {
-  createApp,
-  createInitializer
+  initializer: async (context, callback) => {
+    try {
+      // 连接数据库
+      await require('./mongoose')()
+      callback()
+    } catch (error) {
+      callback(error)
+    }
+  },
+  handler: (req, res, context)  => {
+    server.httpProxy(req, res, context)
+  },
 }
