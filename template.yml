@@ -1,13 +1,11 @@
 ROSTemplateFormatVersion: '2015-09-01'
 Transform: 'Aliyun::Serverless-2018-04-03'
 Resources:
-  # 服务定义
-  api: # service name
+  aliyun-fc: # service name
     Type: 'Aliyun::Serverless::Service'
     Properties:
       Description: ''
-    # 授权接口
-    wechat: # function name
+    express: # function name
       Type: 'Aliyun::Serverless::Function'
       Properties:
         Handler: index.handler
@@ -23,7 +21,7 @@ Resources:
             AuthType: ANONYMOUS
             Methods: ['GET']
   # 自定义域名
-  api.codonas.cn:
+  custom.domain.com:
     Type: 'Aliyun::Serverless::CustomDomain'
     Properties:
       Protocol: HTTP
@@ -35,8 +33,8 @@ Resources:
       RouteConfig:
         Routes:
           '/*':
-            ServiceName: api
-            FunctionName: wechat
+            ServiceName: aliyun-fc
+            FunctionName: express
          
   # expressGroup:
   #   Type: 'Aliyun::Serverless::Api'

@@ -2,7 +2,7 @@
 const app = require('./www')
 
 app.get('/', (request, response) => {
-  response.send('欢迎访问微信接口项目')
+  response.send('欢迎使用当前系统')
 })
 
 // 兜底处理接口查询不到
@@ -12,7 +12,7 @@ app.get('*', (request, response) => {
   response.send({
     success: false,
     code: -1,
-    message: '未定义的接口',
+    message: '此访问无效',
     errorDetail: {
       requestId,
       method,

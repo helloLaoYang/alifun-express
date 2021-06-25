@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon build --watch src",
-    "fun": "fun local start"
+    "fun": "fun local start custom.domain.com"
   },
   "devDependencies": {
     "@alicloud/fun": "^3.6.23",
