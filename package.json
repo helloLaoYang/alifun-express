@@ -7,20 +7,21 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon build/entry/dev.js --watch src",
-    "dev:fun": "nodemon build/index --watch src"
+    "dev:fun": "node build/index && fun local start",
+    "build": "node build/index"
   },
   "devDependencies": {
     "@alicloud/fun": "^3.6.23",
-    "mongodb-client-encryption": "^1.2.5",
     "nodemon": "^2.0.7",
     "progress-bar-webpack-plugin": "^2.1.0",
     "rimraf": "^3.0.2",
-    "webpack": "^5.40.0",
-    "webpack-node-externals": "^3.0.0"
+    "terser-webpack-plugin": "^5.1.3",
+    "webpack": "^5.40.0"
   },
   "dependencies": {
     "@webserverless/fc-express": "^1.0.0",
     "express": "^4.17.1",
+    "mongodb-client-encryption": "^1.2.5",
     "mongoose": "^5.12.14"
   }
 }

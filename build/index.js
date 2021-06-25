@@ -1,7 +1,7 @@
 const path = require('path')
 const rimraf = require('rimraf')
 const webpack = require('webpack')
-const webpackConfig = require('./config')
+const webpackConfig = require('./webpack.config')
 
 rimraf(
   path.resolve(__dirname, '../dist'),

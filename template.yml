@@ -1,6 +1,7 @@
 ROSTemplateFormatVersion: '2015-09-01'
 Transform: 'Aliyun::Serverless-2018-04-03'
 Resources:
+  # 服务定义
   alifun-express: # service name
     Type: 'Aliyun::Serverless::Service'
     Properties:
@@ -11,13 +12,30 @@ Resources:
         Handler: index.handler
         Runtime: nodejs12
         CodeUri: './dist'
-        Timeout: 60
+        Initializer: index.initializer
+        Timeout: 6
+        InstanceConcurrency: 20
       Events:
         httpTrigger:
           Type: HTTP
           Properties:
             AuthType: ANONYMOUS
             Methods: ['POST', 'GET']
+  # 自定义域名
+  oauth.api.codonas.cn:
+    Type: 'Aliyun::Serverless::CustomDomain'
+    Properties:
+      Protocol: HTTP
+      # Protocol: HTTP,HTTPS
+      # CertConfig:
+        #  CertName: 'CertName'
+        #  PrivateKey: './certificates/privateKey.pem'
+        #  Certificate: './certificates/certificate.pem'
+      RouteConfig:
+        Routes:
+          '/oauth':
+            ServiceName: alifun-express
+            FunctionName: express
   # expressGroup:
   #   Type: 'Aliyun::Serverless::Api'
   #   Properties:
